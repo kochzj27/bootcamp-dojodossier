@@ -11,7 +11,7 @@ const TabForm = (props) => {
     if (title !== '') {
       props.addTab(title);
       //get new one send to database
-      props.send({ type: 'newItem', data: props.info[props.current + 1] })
+      props.send({ type: 'newItem', data: { name: title, about: [] } })
     }
     setTitle('');
   }

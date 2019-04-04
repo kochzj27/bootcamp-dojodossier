@@ -1,0 +1,17 @@
+.right {
+  text-align: right;
+}
+
+.box {
+  padding: 15px;
+  text-align: left;
+  border: 1px solid lightgray;
+  border-top: none;
+  border-radius: 0px 0px 5px 5px;
+}
+
+.topish {
+  margin-top: 10px;
+  margin-right: -15px;
+  margin-left: 15px;
+}

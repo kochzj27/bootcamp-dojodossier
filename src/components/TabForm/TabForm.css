@@ -1,0 +1,14 @@
+.tabform {
+  display: flex;
+  flex-direction: column;
+}
+
+.tabform-form {
+  width: 300px;
+  margin-left: auto;
+}
+
+.buts{
+  margin-top: 15px;
+  width: 100%;
+}

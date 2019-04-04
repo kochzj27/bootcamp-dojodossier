@@ -10,6 +10,8 @@ const TabForm = (props) => {
     event.preventDefault();
     if (title !== '') {
       props.addTab(title);
+      //get new one send to database
+      props.send({ type: 'newItem', data: props.info[props.current + 1] })
     }
     setTitle('');
   }
@@ -25,6 +27,7 @@ const TabForm = (props) => {
 
 const mapStateToProps = (state) => ({
   info: state.info,
+  current: state.addedId,
   selectedTab: state.selectedTab,
 })
 

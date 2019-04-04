@@ -11,30 +11,38 @@ const AppContainer = (props) => {
     event.preventDefault();
     if (newItem !== '') {
       props.addItem(newItem)
+      let x = [...props.info[props.selectedTab].about, newItem];
+      let y = Object.assign({}, props.info[props.selectedTab]);
+      y.about = x;
+      setTimeout(() => props.send({ type: 'updateItem', data: y }), 500);
     }
     setItem('')
   }
+  let displayTabs;
+  let displayAbout;
 
-  let displayTabs = props.info.map((tab, idx) => {
-    return (
-      <li className="nav-item" key={idx}>
-        <span className={`nav-link ${idx === props.selectedTab ? 'active' : ''}`} onClick={() => props.changeTab(idx)}>{tab.name}</span>
-      </li >
-    )
-  });
+  if (props.info.length > 0) {
+    displayTabs = props.info.map((tab, idx) => {
+      return (
+        <li className="nav-item" key={idx}>
+          <span className={`nav-link ${idx === props.selectedTab ? 'active' : ''}`} onClick={() => props.changeTab(idx)}>{tab.name}</span>
+        </li >
+      )
+    });
 
-  let displayAbout = props.info[props.selectedTab].about.map((trait, idx) => {
-    return (
-      <li key={idx}>
-        {trait}
-      </li>
-    )
-  });
+    displayAbout = props.info[props.selectedTab].about.map((trait, idx) => {
+      return (
+        <li key={idx}>
+          {trait}
+        </li>
+      )
+    });
+  }
 
   return (
     <div className='container'>
       <div className='right'>
-        <TabForm />
+        <TabForm send={props.send} />
       </div>
       <div className='container topish'>
         <ul className="nav nav-tabs">

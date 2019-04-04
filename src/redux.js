@@ -20,6 +20,10 @@ export const addItem = (value) => ({
   value                        // <-- action.type
 });
 
+export const addState = (object) => ({
+  type: 'ADD_STATE',
+  object                        // <-- action.type
+});
 
 ///REDUCERS
 export const reducers = (state = initialState1, action) => {
@@ -39,6 +43,7 @@ export const reducers = (state = initialState1, action) => {
             ...state.info,
             { id, name: action.value, about: [] }
           ],
+          addedId: id,
         }
       );
 
@@ -51,6 +56,17 @@ export const reducers = (state = initialState1, action) => {
         {},
         state,
         { selectedTab: action.value }
+      );
+
+    case 'ADD_STATE':
+      console.log(" -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --")
+      console.log(" -- REDUCER -- ADD_STATE | state: ", state)
+      console.log(" -- REDUCER -- ADD_STATE | action: ", action)
+      console.log(" -- REDUCER -- ADD_STATE | action.value: ", action.object)
+      return Object.assign(
+        {},
+        state,
+        { info: action.object }
       );
 
 
@@ -86,12 +102,13 @@ export const reducers = (state = initialState1, action) => {
 let id = 3;
 const initialState1 = {
   info: [
-    { id: 0, name: 'Johnny', about: ['Great Listener', 'Eats a lot of pizzas', 'uses pineapples'] },
-    { id: 1, name: 'Joshua', about: ['Works in sales', 'has 2 cats', 'saves lifes with blenders'] },
-    { id: 2, name: 'Jamie', about: ['Great person', 'studies sciences'] },
-    { id: 3, name: 'Jessica', about: ['Terrible Listener', 'drinks a lot of alchohol', 'gets great grades'] },
+    // { id: 0, name: 'Johnny', about: ['Great Listener', 'Eats a lot of pizzas', 'uses pineapples'] },
+    // { id: 1, name: 'Joshua', about: ['Works in sales', 'has 2 cats', 'saves lifes with blenders'] },
+    // { id: 2, name: 'Jamie', about: ['Great person', 'studies sciences'] },
+    // { id: 3, name: 'Jessica', about: ['Terrible Listener', 'drinks a lot of alchohol', 'gets great grades'] },
   ],
   selectedTab: 0,
+  addedId: 3,
 };
 
 
